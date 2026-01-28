@@ -77,8 +77,7 @@ def main():
         opcion = leer_opcion()
 
         if opcion == 1:
-            codigo,nombre 
-            registrar_estudiante()
+            codigo,nombre = registrar_estudiante()
         elif opcion ==2:
             n1, n2, n3 
             leer_notas()
