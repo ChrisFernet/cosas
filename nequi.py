@@ -38,20 +38,21 @@ def pagar(saldo):
         input()
         return saldo
 
-    elif monto > saldo:
+    if monto > saldo:
         print("Saldo insuficiente.")
         input()
+        
         return saldo
-
     if monto < saldo:
-        saldo - monto
         print("Operación exitosa.")
+
     return saldo - monto
 
 def celular_isnumeric(celular):
     for num in celular:
         if not num.isdigit():
             return False
+        
     return True
 
 def transferir(saldo):
@@ -59,20 +60,24 @@ def transferir(saldo):
     monto = int(input("Ingrese el monto a transferir: "))
     if not (len(celular) == 10 and celular_isnumeric(celular)):
         print("Número inválido.")
-        print("\n\n")
-        menu()
-    elif monto < 1:
+        input()
+    
+        return saldo
+
+    if monto < 1:
         print("Monto inválido. presione para continuar.")
-        print("\n\n")
-        menu()
-        monto = input()
-    elif monto > saldo:
+        input()
+
+        return saldo
+    
+    if monto > saldo:
         print("Saldo insuficiente.")
         print("\n\n")
         menu()
-    elif monto < saldo:
-        saldo - monto
+    else:
         print("Operación exitosa.")
+
+    return saldo - monto
 
 def mostrar_saldo(saldo):
     print("El saldo actual es: ", saldo)
@@ -80,7 +85,6 @@ def mostrar_saldo(saldo):
 
 def main():
     opcion=0
-    ingreso=0
     saldo=0
     while ((opcion!=5)):
         menu()
@@ -89,9 +93,9 @@ def main():
         if opcion ==1:
             saldo = cargar_saldo(saldo)
         elif opcion ==2:
-            saldo = pagar()
+            saldo = pagar(saldo)
         elif opcion ==3:
-            transferir()
+            saldo = transferir(saldo)
         elif opcion ==4:
             mostrar_saldo(saldo)
         elif opcion ==5:
